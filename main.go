@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yudwig/gin-tutorial/fizzbuzz"
 )
 
 var db = make(map[string]string)
@@ -17,7 +18,17 @@ func setupRouter() *gin.Engine {
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H {
 			"title": "Gin Tutorial",
-			"text": "Hello world.",
+			"text": "sketch links",
+		})
+	})
+
+	r.GET("/fizzbuzz", func(c *gin.Context) {
+		fizzBuzz := fizzbuzz.NewFizzBuzz()
+		arr := fizzbuzz.Run(*fizzBuzz)
+		c.HTML(http.StatusOK, "fizzbuzz.html", gin.H {
+			"title": "FizzBuzz",
+			"text": "FizzBuzz 1 -> 50",
+			"arr": arr,
 		})
 	})
 

@@ -14,12 +14,15 @@
     <main class="uk-flex uk-flex-center">
       <article class="uk-article uk-margin-top">
         <h1 class="uk-heading-bullet">{{.text}}</h1>
-        <div class="uk-text-lead">
-          <ul class="uk-list uk-link-text">
-            <li><a href="/fizzbuzz">FizzBuzz</a></li>
+        <p class="uk-text-lead">
+          <ul class="uk-list">
+              {{range $index, $str := .arr}}
+                <li>{{$str}}</li>
+              {{end}}
           </ul>
-        </div>
+        </p>
       </article>
     </main>
   </body>
 </html>
+
